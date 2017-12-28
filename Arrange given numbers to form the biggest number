@@ -1,0 +1,64 @@
+import java.util.*;
+import java.io.*;
+
+class Main
+{
+	static Scanner in=new Scanner(System.in);
+	
+	public static void main(String[] args) throws java.io.IOException
+	{
+		int arr[]={1,1,2,11,22,115,111,10};
+		int N=arr.length;
+		
+		for(int i=0; i < N; i++)
+		{
+			for(int j=0; j < N - i - 1; j++)
+			{
+				System.out.println(Arrays.toString(arr));
+				if(changeKarnaChahiye(arr[j], arr[j + 1]))
+				{
+					int t=arr[j];
+					arr[j]=arr[j + 1];
+					arr[j + 1]=t;
+				}
+			}
+		}
+		
+		System.out.println(Arrays.toString(arr));
+	}
+	
+	static boolean changeKarnaChahiye(int a, int b)
+	{
+		if(a == b)
+		{
+			return false;
+		}
+		String n1="" + a;
+		String n2="" + b;
+		
+		int min=Math.min(n1.length(), n2.length());
+		int i=0;
+		while(i < min)
+		{
+			int c1=n1.charAt(i) - 48;
+			int c2=n2.charAt(i) - 48;
+			if(c2 > c1)
+			{
+				return true;
+			}
+			if(c1 > c2)
+			{
+				return false;
+			}
+			i++;
+		}
+		
+		String largest=n1.length() > n2.length() ? n1 : n2;
+		String smallest=n1.length() < n2.length() ? n1 : n2;
+		if(largest.charAt(i) > smallest.charAt(i - 1)&&largest.equals(n2))
+		{
+			return true;
+		}
+		return false;
+	}
+}
