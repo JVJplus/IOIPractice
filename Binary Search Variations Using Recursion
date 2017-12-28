@@ -1,0 +1,74 @@
+#include<bits/stdc++.h>
+
+#define FOR(i, n) for(int i=0;i<n;i++)
+#define FORE(i, a, b) for(int i=a;i<=b;i++)
+#define ll long long int
+#define mp(a, b) make_pair(a,b)
+#define vi vector<int>
+#define pb(a) push_back(a)
+#define mod 1000000007
+#define all(x) x.begin(),x.end()
+#define AIN(a, n, b) assert(a<=n && n<=b)
+
+using namespace std;
+
+void displayArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+void acceptArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+        cin >> arr[i];
+}
+
+int binarySearch(int arr[], int start, int end, int toSearch)
+{
+    if (end < start)
+        return -1;
+    int middle = start + (end - start) / 2;
+    if (arr[middle] == toSearch)
+        return middle;
+    else if (arr[middle] > toSearch)
+        return binarySearch(arr, start, middle - 1, toSearch);
+    else
+        return binarySearch(arr, middle + 1, end, toSearch);
+}
+
+int firstOccurance(int arr[], int start, int end, int toSearch)
+{
+    if (end < start)
+        return -1;
+    int middle = start + (end - start) / 2;
+    if (arr[middle] == toSearch)
+    {
+        int previousSimilarElement = firstOccurance(arr, start, middle - 1, toSearch);
+        if (previousSimilarElement == -1)
+            return middle;
+        return previousSimilarElement;
+    } else if (arr[middle] < toSearch)
+        return firstOccurance(arr, middle + 1, end, toSearch);
+    else
+        return firstOccurance(arr, start, middle - 1, toSearch);
+}
+
+
+int lastOccurance(int arr[], int start, int end, int toSearch)
+{
+    if (end < start)
+        return -1;
+    int middle = start + (end - start) / 2;
+    if (arr[middle] == toSearch)
+    {
+        int nextSimilarElement = lastOccurance(arr, middle + 1, end, toSearch);
+        if (nextSimilarElement == -1)
+            return middle;
+        return nextSimilarElement;
+    } else if (arr[middle] < toSearch)
+        return lastOccurance(arr, middle + 1, end, toSearch);
+    else
+        return lastOccurance(arr, start, middle - 1, toSearch);
+}
