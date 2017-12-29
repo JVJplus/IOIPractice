@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+
+#define ll long long int
+#define mp(a, b) make_pair(a,b)
+#define vi vector<int>
+#define pb(a) push_back(a)
+#define mod 1000000007
+#define all(x) x.begin(),x.end()
+#define AIN(a, n, b) assert(a<=n && n<=b)
+
+using namespace std;
+
+int main()
+{
+    ll a, b;
+    while (cin >> a >> b)
+    {
+        ll temp_a = a;
+        ll temp_b = b;
+
+        if (a > b)swap(a, b);
+
+        ll max_Circle = 0;
+        ll circles;
+        ll n;
+        while (a <= b)
+        {
+            n = a;
+            circles = 1;
+            while (n != 1)
+            {
+                if (n % 2)
+                    n = 3 * n + 1;
+                else
+                    n /= 2;
+                circles++;
+            }
+            if (circles > max_Circle)
+                max_Circle = circles;
+            a++;
+        }
+        cout << temp_a << " " << temp_b << " " << max_Circle << endl;
+    }
+}
