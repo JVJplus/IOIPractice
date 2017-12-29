@@ -1,59 +1,126 @@
 import java.util.*;
-import java.io.*;
 
-public class Main
+class Main
 {
 	static Scanner in=new Scanner(System.in);
 	
 	public static void main(String[] args)
 	{
-		int N=in.nextInt();
-		int arr[]=new int[N];
-		for(int i=0;i<N;i++)
-			arr[i]=in.nextInt();
-		int min=Integer.MAX_VALUE;
+		int arr[]={121, 5, 2, 12, 11, 13, 10, 12};
 		
-		for(int i=0;i<N;i++)
-		{
-			for(int j=i+1;j<N;j++)
-			{
-				if(arr[j]==arr[i])
-				{
-					int diff=j-i;
-					if(diff<min)
-						min=diff;
-					break;
-				}
-			}
-		}
-		System.out.println(min);
-	}
-	
-	/*public static void main(String[] args) throws java.io.IOException
-	{
-		int N=in.nextInt();
-		int arr[]=new int[N];
-		
-		for(int i=0; i < N; i++)
-		{
-			arr[i]=in.nextInt();
-		}
-			
-			*//* Test Cases
+		/* Test Cases
+			{824, 938, 1399, 5607, 6973, 5703, 9609, 4398, 8247};
+			{121,12};
+			{0,0,0,1,0,0,2};
+			{850, 5876, 85, 856, 587};
 			{54,54,55,5,55,6,66,56};
 			{1,1,2,11,22,15,111,10};
 			{54,546,548,54,60,60};
 			{1,34,3,98,9,76,45,4};
-			{9,98,76,45,4,34,3,12,121,1};*//*
+			{9,98,76,45,4,34,3,12,121,1};
+			*/
+		
+		System.out.println(largestNumber(arr));
+	}
+	
+	public static String largestNumber(int[] nums)
+	{
+		return Main.usingSelectionSort(nums);
+		//		return Main.usingBubbleSort(nums);
+	}
+	
+	public static String usingSelectionSort(int arr[])
+	{
+		int N=arr.length;
+		
+		//selection sort variation
+		for(int i=0; i < N; i++)
+		{
+			int max=arr[i];
+			int maxPos=i;
+			
+			//			System.out.println(Arrays.toString(arr));
+			
+			for(int j=i + 1; j < N; j++)
+			{
+				if(secondBadaHaiKya(max, arr[j]))
+				{
+					max=arr[j];
+					maxPos=j;
+				}
+			}
+			if(maxPos != i)
+			{
+				int t=arr[maxPos];
+				arr[maxPos]=arr[i];
+				arr[i]=t;
+			}
+		}
+		
+		String str="";
+		for(int i=0; i < N; i++)
+		{
+			str+=arr[i];
+		}
+		try
+		{
+			if(Integer.parseInt(str) == 0)
+			{
+				return "0";
+			}
+		}
+		catch(Exception e)
+		{
+		}
+		return str;
+	}
+	
+	static boolean secondBadaHaiKyaUsingString(int n1, int n2)
+	{
+		String a=n1 + "" + n2;
+		String b=n2 + "" + n1;
+		int i=0;
+		while(i < a.length())
+		{
+			if(a.charAt(i) > b.charAt(i))
+			{
+				return false;
+			}
+			if(b.charAt(i) > a.charAt(i))
+			{
+				return true;
+			}
+			i++;
+			//dont forget == comparation difference ie >= in else part
+		}
+		return false;
+	}
+	
+	//selection sort comparator
+	static boolean secondBadaHaiKya(int n1, int n2)
+	{
+		Long a=Long.parseLong(n1 + "" + n2);
+		Long b=Long.parseLong(n2 + "" + n1);
+		
+		//		System.out.println(a+" "+b);
+		if(a > b)
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public static String usingBubbleSort(int arr[])
+	{
+		int N=arr.length;
 		
 		//Modifying Bubble Sort Algorithm to Solve This Problem
 		for(int i=0; i < N; i++)
 		{
-			//{54,55,5,55,6,56};
 			for(int j=0; j < N - i - 1; j++)
 			{
-//				System.out.println(Arrays.toString(arr));
-				if(changeKarnaChahiye(arr[j], arr[j + 1]))
+				//				System.out.println(Arrays.toString(arr));
+				if(secondBadaHaiKya(arr[j], arr[j + 1]))
 				{
 					int t=arr[j];
 					arr[j]=arr[j + 1];
@@ -62,14 +129,27 @@ public class Main
 			}
 		}
 		
+		String str="";
 		for(int i=0; i < N; i++)
 		{
-			System.out.print(arr[i]);
+			str+=arr[i];
 		}
+		try
+		{
+			if(Integer.parseInt(str) == 0)
+			{
+				return "0";
+			}
+		}
+		catch(Exception e)
+		{
+		}
+		return str;
 	}
-	*/
+	
 	//Acts as Comparator
-	static boolean changeKarnaChahiye(int a, int b)
+	//Incorrect messed up with the own logic
+	static boolean changeKarnaChahiyeIncorrect(int a, int b)
 	{
 		if(a == b)
 		{
@@ -98,11 +178,12 @@ public class Main
 		String largest=n1.length() > n2.length() ? n1 : n2;
 		String smallest=n1.length() < n2.length() ? n1 : n2;
 		
-		if(largest.charAt(largest.length() - 1) > smallest.charAt(i - 1) && largest.equals(n2))
+		if(largest.charAt(largest.length() - 1) > smallest.charAt(0) && largest.equals(n2))
 		{
 			return true;
 		}
-		if(largest.charAt(largest.length() - 1) < smallest.charAt(i - 1) && largest.equals(n1))
+		
+		if(largest.charAt(largest.length() - 1) < smallest.charAt(0) && largest.equals(n1))
 		{
 			return true;
 		}
