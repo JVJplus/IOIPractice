@@ -1,0 +1,107 @@
+#include<bits/stdc++.h>
+
+#define FOR(i, n) for(int i=0;i<n;i++)
+#define FORE(i, a, b) for(int i=a;i<=b;i++)
+#define ll long long int
+#define mp(a, b) make_pair(a,b)
+#define vi vector<int>
+#define pb(a) push_back(a)
+#define mod 1000000007
+#define all(x) x.begin(),x.end()
+#define AIN(a, n, b) assert(a<=n && n<=b)
+
+using namespace std;
+
+template<class T>
+void displayArray(T arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+template<class T>
+void acceptArray(T arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+        cin >> arr[i];
+}
+
+int main()
+{
+    string usingSelectionSort(int [], int);
+
+    int arr[] = {121, 5, 2, 12, 11, 13, 10, 12};
+    int N = sizeof(arr) / sizeof(int);
+    string s = "";
+
+    s=usingSelectionSort(arr, N);
+    cout<<s;
+}
+
+
+string usingSelectionSort(int arr[], int N)
+{
+    bool secondBadaHai(int, int);
+    bool secondBadaHaiUsingString(int, int);
+
+    //selection sort variation
+    for(int i=0; i < N; i++)
+    {
+        int max=arr[i];
+        int maxPos=i;
+
+        //			System.out.println(Arrays.toString(arr));
+
+        for(int j=i + 1; j < N; j++)
+        {
+            if(secondBadaHai(max, arr[j]))
+            {
+                max=arr[j];
+                maxPos=j;
+            }
+        }
+        if(maxPos != i)
+        {
+            int t=arr[maxPos];
+            arr[maxPos]=arr[i];
+            arr[i]=t;
+        }
+    }
+
+    string s="";
+    for (int i = 0; i < N; i++)
+    {
+        cout << arr[i] << endl;
+        s += to_string(arr[i]);
+    }
+    cout<<endl;
+    
+    return s;    
+}
+
+
+bool secondBadaHai(int n1, int n2)
+{
+    ll a = stoll(to_string(n1) + to_string(n2));
+    ll b = stoll(to_string(n2) + to_string(n1));
+//    cout << a << " " << b << endl;
+    if (a > b)
+        return false;
+    return true;
+}
+
+
+bool secondBadaHaiUsingString(int n1, int n2)
+{
+    string a = to_string(n1) + to_string(n2);
+    string b = to_string(n2) + to_string(n1);
+
+    int i = 0;
+    while (i < a.length())
+    {
+        if (a[i] > b[i])return false;
+        if (b[i] > a[i])return true;
+    }
+    return true;
+}
