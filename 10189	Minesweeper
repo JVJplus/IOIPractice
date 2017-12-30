@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+
+#define ll long long int
+#define mp(a, b) make_pair(a,b)
+#define vi vector<int>
+#define pb(a) push_back(a)
+#define mod 1000000007
+#define all(x) x.begin(),x.end()
+#define AIN(a, n, b) assert(a<=n && n<=b)
+
+using namespace std;
+
+int main()
+{
+    int n,m,counterOfTestCase=1;
+    while(cin>>n>>m)
+    {
+        if(m==0&&n==0)
+            break;
+
+        if(counterOfTestCase!=1)
+            cout<<endl;
+        
+        cout<<"Field #"<<counterOfTestCase++<<":"<<endl;
+
+        char maze[n+2][m+2];
+        for(int i=0;i<n+2;i++)
+            for(int j=0;j<m+2;j++)
+                if(i==0||i==n+1||j==0||j==m+1)
+                    maze[i][j]='.';
+                else
+                    cin>>maze[i][j];
+
+
+//        char mines[n+2][m+2];
+
+        for(int i=1;i<n+1;i++)
+        {
+            for (int j = 1; j < m + 1; j++)
+                if (maze[i][j] == '*')
+                    cout << '*';
+                else
+                {
+                    int c = 0;
+                    for (int k = i - 1; k <= i + 1; k++)
+                        for (int l = j - 1; l <= j + 1; l++)
+                            if (maze[k][l] == '*')
+                                c++;
+
+                    cout << c;
+                }
+            cout << endl;
+        }
+    }
+}
