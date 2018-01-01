@@ -1,0 +1,182 @@
+import java.util.*;
+
+class Main
+{
+	static Scanner in=new Scanner(System.in);
+	
+	public static void main(String[] args)
+	{
+		//pattern[digit][line_number][index]
+		char[][][] pattern=new char[10][5][3];
+		
+		pattern[0][0]=new char[]{' ', '-', ' '};
+		pattern[0][1]=new char[]{'|', ' ', '|'};
+		pattern[0][2]=new char[]{' ', ' ', ' '};
+		pattern[0][3]=new char[]{'|', ' ', '|'};
+		pattern[0][4]=new char[]{' ', '-', ' '};
+		
+		pattern[1][0]=new char[]{' ', ' ', ' '};
+		pattern[1][1]=new char[]{' ', ' ', '|'};
+		pattern[1][2]=new char[]{' ', ' ', ' '};
+		pattern[1][3]=new char[]{' ', ' ', '|'};
+		pattern[1][4]=new char[]{' ', ' ', ' '};
+		
+		pattern[2][0]=new char[]{' ', '-', ' '};
+		pattern[2][1]=new char[]{' ', ' ', '|'};
+		pattern[2][2]=new char[]{' ', '-', ' '};
+		pattern[2][3]=new char[]{'|', ' ', ' '};
+		pattern[2][4]=new char[]{' ', '-', ' '};
+		
+		pattern[3][0]=new char[]{' ', '-', ' '};
+		pattern[3][1]=new char[]{' ', ' ', '|'};
+		pattern[3][2]=new char[]{' ', '-', ' '};
+		pattern[3][3]=new char[]{' ', ' ', '|'};
+		pattern[3][4]=new char[]{' ', '-', ' '};
+		
+		pattern[4][0]=new char[]{' ', ' ', ' '};
+		pattern[4][1]=new char[]{'|', ' ', '|'};
+		pattern[4][2]=new char[]{' ', '-', ' '};
+		pattern[4][3]=new char[]{' ', ' ', '|'};
+		pattern[4][4]=new char[]{' ', ' ', ' '};
+		
+		pattern[5][0]=new char[]{' ', '-', ' '};
+		pattern[5][1]=new char[]{'|', ' ', ' '};
+		pattern[5][2]=new char[]{' ', '-', ' '};
+		pattern[5][3]=new char[]{' ', ' ', '|'};
+		pattern[5][4]=new char[]{' ', '-', ' '};
+		
+		pattern[6][0]=new char[]{' ', '-', ' '};
+		pattern[6][1]=new char[]{'|', ' ', ' '};
+		pattern[6][2]=new char[]{' ', '-', ' '};
+		pattern[6][3]=new char[]{'|', ' ', '|'};
+		pattern[6][4]=new char[]{' ', '-', ' '};
+		
+		pattern[7][0]=new char[]{' ', '-', ' '};
+		pattern[7][1]=new char[]{' ', ' ', '|'};
+		pattern[7][2]=new char[]{' ', ' ', ' '};
+		pattern[7][3]=new char[]{' ', ' ', '|'};
+		pattern[7][4]=new char[]{' ', ' ', ' '};
+		
+		pattern[8][0]=new char[]{' ', '-', ' '};
+		pattern[8][1]=new char[]{'|', ' ', '|'};
+		pattern[8][2]=new char[]{' ', '-', ' '};
+		pattern[8][3]=new char[]{'|', ' ', '|'};
+		pattern[8][4]=new char[]{' ', '-', ' '};
+		
+		pattern[9][0]=new char[]{' ', '-', ' '};
+		pattern[9][1]=new char[]{'|', ' ', '|'};
+		pattern[9][2]=new char[]{' ', '-', ' '};
+		pattern[9][3]=new char[]{' ', ' ', '|'};
+		pattern[9][4]=new char[]{' ', '-', ' '};
+		
+		
+	/*	for(int i=0;i<10;i++)
+		{
+			for(int j=0;j<5;j++)
+			{
+				for(int k=0;k<3;k++)
+				{
+					char c=pattern[i][j][k];
+					if(c == ' ')
+					{
+						System.out.printf("*");
+					}
+					else
+					{
+						System.out.printf("%c",c);
+					}
+				}
+				System.out.println();
+			}
+			System.out.println();
+			System.out.println();
+		}*/
+		
+		while(true)
+		{
+			int size=in.nextInt();
+			int nos=in.nextInt();
+			if(size==0&&nos==0)
+			{
+				break;
+			}
+			String number=""+nos;
+			
+			{//real work
+				int middle, digit, i, j, k, l, m, n;
+				n=(2 * size) + 3;
+				m=size + 2;
+				middle=Math.round(n / 2);//(int) ((size / 2.0) + 0.5);
+				
+				for(i=0; i < n; i++)//no of lines
+				{
+					for(j=0; j < number.length(); j++)//digit
+					{
+						digit=Integer.parseInt("" + number.charAt(j));
+						//						for(l=0; l < m; l++)//digit pattern
+						{
+							if(i < middle && i > 0)
+							{
+								System.out.print(pattern[digit][1][0]);
+								for(k=0; k < size; k++)
+								{
+									System.out.print(pattern[digit][1][1]);
+								}
+								System.out.print(pattern[digit][1][2]);
+							}
+							
+							if(i > middle && i < n - 1)
+							{
+								System.out.print(pattern[digit][3][0]);
+								for(k=0; k < size; k++)
+								{
+									System.out.print(pattern[digit][3][1]);
+								}
+								System.out.print(pattern[digit][3][2]);
+							}
+							
+							if(i == middle)
+							{
+								System.out.print(pattern[digit][2][0]);
+								for(k=0; k < size; k++)
+								{
+									System.out.print(pattern[digit][2][1]);
+								}
+								System.out.print(pattern[digit][2][2]);
+							}
+							
+							if(i == n - 1)
+							{
+								System.out.print(pattern[digit][4][0]);
+								for(k=0; k < size; k++)
+								{
+									System.out.print(pattern[digit][4][1]);
+								}
+								System.out.print(pattern[digit][4][2]);
+							}
+							
+							if(i == 0)
+							{
+								System.out.print(pattern[digit][0][0]);
+								for(k=0; k < size; k++)
+								{
+									System.out.print(pattern[digit][0][1]);
+								}
+								System.out.print(pattern[digit][0][2]);
+							}
+						}
+						if(j != number.length() - 1)
+						{
+							System.out.print(" ");
+						}
+					}
+					if(i != n)
+					{
+						System.out.println();
+					}
+				}// i loop
+				System.out.println();
+			}//process
+		}//while loop
+	}//main
+}//class
