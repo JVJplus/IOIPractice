@@ -9,6 +9,129 @@ class Main
 		//pattern[digit][line_number][index]
 		char[][][] pattern=new char[10][5][3];
 		
+		setDefaultCharacters(pattern);
+		
+		
+		while(true)
+		{
+			int size=in.nextInt();
+			int nos=in.nextInt();
+			if(size==0&&nos==0)
+			{
+				break;
+			}
+			String number=""+nos;
+			
+			{//real work
+				int middle, digit, lineNo, digitLengthIterator, k, l, m, n;
+				n=(2 * size) + 3;
+				m=size + 2;
+				middle=Math.round(n / 2);//(int) ((size / 2.0) + 0.5);
+				
+				for(lineNo=0; lineNo < n; lineNo++)//no of lines
+				{
+					for(digitLengthIterator=0; digitLengthIterator < number.length(); digitLengthIterator++)//digit
+					{
+						digit=Integer.parseInt("" + number.charAt(digitLengthIterator));
+						{
+							if(lineNo < middle && lineNo > 0)
+							{
+								printLinesBeforeMiddle(pattern[digit], size);
+							}
+							
+							if(lineNo > middle && lineNo < n - 1)
+							{
+								printLinesAfterMiddle(pattern[digit], size);
+							}
+							
+							if(lineNo == middle)
+							{
+								printMiddleLine(pattern[digit], size);
+							}
+							
+							if(lineNo == n - 1)
+							{
+								printLastLine(pattern[digit], size);
+							}
+							
+							if(lineNo == 0)
+							{
+								printFirstLine(pattern[digit], size);
+							}
+						}
+						if(digitLengthIterator != number.length() - 1)
+						{
+							System.out.print(" ");
+						}
+					}
+					if(lineNo != n)
+					{
+						System.out.println();
+					}
+				}// lineNo loop
+				System.out.println(); //seprating test cases
+			}//process
+		}//while loop
+	}//main
+	
+	
+	public static void printFirstLine(char[][] chars, int size)
+	{
+		int k;
+		System.out.print(chars[0][0]);
+		for(k=0; k < size; k++)
+		{
+			System.out.print(chars[0][1]);
+		}
+		System.out.print(chars[0][2]);
+	}
+	
+	public static void printLastLine(char[][] chars, int size)
+	{
+		int k;
+		System.out.print(chars[4][0]);
+		for(k=0; k < size; k++)
+		{
+			System.out.print(chars[4][1]);
+		}
+		System.out.print(chars[4][2]);
+	}
+	
+	public static void printMiddleLine(char[][] chars, int size)
+	{
+		int k;
+		System.out.print(chars[2][0]);
+		for(k=0; k < size; k++)
+		{
+			System.out.print(chars[2][1]);
+		}
+		System.out.print(chars[2][2]);
+	}
+	
+	public static void printLinesAfterMiddle(char[][] chars, int size)
+	{
+		int k;
+		System.out.print(chars[3][0]);
+		for(k=0; k < size; k++)
+		{
+			System.out.print(chars[3][1]);
+		}
+		System.out.print(chars[3][2]);
+	}
+	
+	public static void printLinesBeforeMiddle(char[][] chars, int size)
+	{
+		int k;
+		System.out.print(chars[1][0]);
+		for(k=0; k < size; k++)
+		{
+			System.out.print(chars[1][1]);
+		}
+		System.out.print(chars[1][2]);
+	}
+	
+	public static void setDefaultCharacters(char[][][] pattern)
+	{
 		pattern[0][0]=new char[]{' ', '-', ' '};
 		pattern[0][1]=new char[]{'|', ' ', '|'};
 		pattern[0][2]=new char[]{' ', ' ', ' '};
@@ -68,115 +191,6 @@ class Main
 		pattern[9][2]=new char[]{' ', '-', ' '};
 		pattern[9][3]=new char[]{' ', ' ', '|'};
 		pattern[9][4]=new char[]{' ', '-', ' '};
-		
-		
-	/*	for(int i=0;i<10;i++)
-		{
-			for(int j=0;j<5;j++)
-			{
-				for(int k=0;k<3;k++)
-				{
-					char c=pattern[i][j][k];
-					if(c == ' ')
-					{
-						System.out.printf("*");
-					}
-					else
-					{
-						System.out.printf("%c",c);
-					}
-				}
-				System.out.println();
-			}
-			System.out.println();
-			System.out.println();
-		}*/
-		
-		while(true)
-		{
-			int size=in.nextInt();
-			int nos=in.nextInt();
-			if(size==0&&nos==0)
-			{
-				break;
-			}
-			String number=""+nos;
-			
-			{//real work
-				int middle, digit, i, j, k, l, m, n;
-				n=(2 * size) + 3;
-				m=size + 2;
-				middle=Math.round(n / 2);//(int) ((size / 2.0) + 0.5);
-				
-				for(i=0; i < n; i++)//no of lines
-				{
-					for(j=0; j < number.length(); j++)//digit
-					{
-						digit=Integer.parseInt("" + number.charAt(j));
-						//						for(l=0; l < m; l++)//digit pattern
-						{
-							if(i < middle && i > 0)
-							{
-								System.out.print(pattern[digit][1][0]);
-								for(k=0; k < size; k++)
-								{
-									System.out.print(pattern[digit][1][1]);
-								}
-								System.out.print(pattern[digit][1][2]);
-							}
-							
-							if(i > middle && i < n - 1)
-							{
-								System.out.print(pattern[digit][3][0]);
-								for(k=0; k < size; k++)
-								{
-									System.out.print(pattern[digit][3][1]);
-								}
-								System.out.print(pattern[digit][3][2]);
-							}
-							
-							if(i == middle)
-							{
-								System.out.print(pattern[digit][2][0]);
-								for(k=0; k < size; k++)
-								{
-									System.out.print(pattern[digit][2][1]);
-								}
-								System.out.print(pattern[digit][2][2]);
-							}
-							
-							if(i == n - 1)
-							{
-								System.out.print(pattern[digit][4][0]);
-								for(k=0; k < size; k++)
-								{
-									System.out.print(pattern[digit][4][1]);
-								}
-								System.out.print(pattern[digit][4][2]);
-							}
-							
-							if(i == 0)
-							{
-								System.out.print(pattern[digit][0][0]);
-								for(k=0; k < size; k++)
-								{
-									System.out.print(pattern[digit][0][1]);
-								}
-								System.out.print(pattern[digit][0][2]);
-							}
-						}
-						if(j != number.length() - 1)
-						{
-							System.out.print(" ");
-						}
-					}
-					if(i != n)
-					{
-						System.out.println();
-					}
-				}// i loop
-				System.out.println();
-			}//process
-		}//while loop
-	}//main
+	}
+	
 }//class
