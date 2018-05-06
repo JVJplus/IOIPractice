@@ -1,29 +1,60 @@
+/*                         
+                                               ____
+                                              /   /
+                                             /   /
+              ________    ____              /   /   _________       _
+             |______  !   \   \            /   /   |_______  !     ! !     _
+                    ! !    \ V \          /   /            ! !     ( @    \ \ 
+                    ! !     \ I \        /   /             ! !_____! !_____\ \
+               _    !J!      \ K \      /   /         _    !  _____   _____ |=|
+              \ \   !A!       \ A \    /   /         \ \   ! !     ! !     / / 
+               \ \  !Y!        \ S \  /   /           \ \  ! !     ( @    /_/  
+                \ \_! !         \ H \/   /             \ \_! !     !_!    
+                 \____!          \______/               \____!      
+
+                              Contact:
+                             ~~~~~~~~~
+
+        Name:          Jay Prakash Mahto
+
+        Phone
+                        9835582472
+        What'sApp:
+
+        E-mail:         JVJplus@gmail.com
+
+        Facebook:       www.facebook.com/JVJplus
+
+        Blog/Page:      www.facebook.com/JVJplusBlog
+
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
-typedef pair<int,int>                   ii;
-typedef vector<int>                     vi; 
-typedef vector<bool>                    vb;
-typedef vector<vi>                      vvi; 
-typedef vector<ii>                      vp;
-typedef unordered_map<int,int>          umap_ii;
-typedef unordered_map<char,int>         umap_ci;
-typedef unordered_map<string,int>       umap_si;
-typedef long long int                   ll; 
-typedef unsigned long long int          ull; 
-typedef pair<int,int>                   ii;
+typedef pair<int,int>                  ii;
+typedef vector<int>                    vi; 
+typedef vector<bool>                   vb;
+typedef vector<vi>                     vvi; 
+typedef vector<ii>                     vp;
+typedef unordered_map<int,int>         umap_ii;
+typedef unordered_map<char,int>        umap_ci;
+typedef unordered_map<string,int>      umap_si;
+typedef long long int                  ll; 
+typedef unsigned long long int         ull; 
+typedef pair<int,int>                  ii;
 
-#define fi                              first
-#define se                              second
-#define INF                             0x3f3f3f3f
-#define PI                              3.1415926535897932384626
-#define MOD                             1000000007
-#define pb                              push_back
-#define uset                            unordered_set
-#define pq_max                          priority_queue<int>
-#define pq_min                          priority_queue<int,vector<int>,greater<int>>
-#define mp                              make_pair  //Better use {}
-#define size5                           100010
+#define fi                             first
+#define se                             second
+#define INF                            0x3f3f3f3f
+#define PI                             3.1415926535897932384626
+#define MOD                            1000000007
+#define pb                             push_back
+#define uset                           unordered_set
+#define pq_max                         priority_queue<int>
+#define pq_min                         priority_queue<int,vector<int>,greater<int>>
+#define mp                             make_pair  //Better use {}
+#define size5                          100010
 
 //LOOPS
 #define For(i,b)                       for(int i=0;i<b;i++)
