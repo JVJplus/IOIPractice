@@ -26,7 +26,7 @@
         Facebook:       www.facebook.com/JVJplus
 
         Blog/Page:      www.facebook.com/JVJplusBlog
-
+----------------------------------------------------------------------------------------->
 */
 
 #include<bits/stdc++.h>
@@ -87,13 +87,14 @@ const int fxx[8][2] =                  {{0,1}, {0,-1}, {1,0}, {-1,0}, {1,1}, {1,
 #define REMIN(a,b)                     (a)=min((a),(b));
 #define sz(a)                          (int)(a.size())
 #define len(a)                         (int)(a.length())
-#define UB(x,a)                        (upper_bound(ALL(a),x)-a.begin())
-#define LB(a,x)                        (lower_bound(ALL(a),x)-a.begin())
-#define NP(a)                          next_permutation(ALL(a))
+#define UB(a,x)                        (upper_bound(all(a),x)-a.begin())
+#define LB(a,x)                        (lower_bound(all(a),x)-a.begin())
+#define NP(a)                          next_permutation(all(a))
 
 #define print(x)                       cout<<x;
 #define print2(x,y)                    cout<<x<<" "<<y;
 #define println(x)                     cout<<x<<'\n';
+#define accept_arr(arr,N)              int arr[N]; For(i,N) cin>>arr[i];
 #define print1d(arr,length)            for(int i=0;i<length;i++) cout<<arr[i]<<" "; cout<<'\n';
 #define print1D(arr,start,length)      for(int i=start;i<length;i++) cout<<arr[i]<<" "; cout<<'\n';
 #define print2d(arr,n)                 For(i,n){For(j,n){cout<<arr[i][j]<<" ";}cout<<endl;}
