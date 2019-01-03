@@ -28,7 +28,7 @@ typedef vector<bool>                   vb;
 #define FOR(i,a,b)                     for(int i=a;i<=b;i++)
 #define MS0(X)                         memset((X), 0, sizeof((X)))
 #define MS1(X)                         memset((X), -1, sizeof((X)))
-#define forit(v,c)                    for(auto v:c)
+#define forit(v,c)                     for(auto v:c)
 #define whileNE(x)                     while(!x.empty())
 #define present(c,x)                   ((c).find(x) != (c).end()) 
 #define cntbit                         __builtin_popcountll
@@ -49,11 +49,9 @@ ll inline ipow(ll a,ll b){ll val=1;while(b){if(b&01)val=(val*a);b>>=1;a=(a*a);};
 #define minall(v)                      *min_element(all(v))
 #define all(a)                         a.begin(), a.end()
 
-
-#define display(x)                       cout<<x;
-#define display2(x,y)                    cout<<x<<" "<<y;
-#define accept_arr                       For(i,N) cin>>arr[i];
-#define accept_array(arr,N)              For(i,N) cin>>arr[i];
+#define display2(x,y)                    cout<<x<<" "<<y<<endl;
+#define accept_arr                       For(i,n)  cin>>arr[i];
+#define accept_array(arr,_n)             For(i,_n) cin>>arr[i];
 #define display1d(arr,length)            for(int i=0;i<length;i++) cout<<arr[i]<<" "; cout<<'\n';
 #define display1D(arr,start,length)      for(int i=start;i<length;i++) cout<<arr[i]<<" "; cout<<'\n';
 #define display2d(arr,n)                 For(i,n){For(j,n){cout<<arr[i][j]<<" ";}cout<<endl;}
@@ -68,30 +66,6 @@ template <typename Arg1>
 void __dbg(const char* name, Arg1&& arg1){cerr << name << " : " << arg1 << std::endl;}
 template <typename Arg1, typename... Args>
 void __dbg(const char* names, Arg1&& arg1, Args&&... args){const char* comma = strchr(names + 1, ',');cerr.write(names, comma - names) << " : " << arg1<<" | ";__dbg(comma+1, args...);}
-
-#define fast_io                        ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);cerr.tie(NULL);
-#define sublimeProblem                 freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout); freopen("debug_log.txt", "w", stderr);
-#define TCase                          int ___T, case_n = 1; cin>>___T; while (___T-- > 0)
-
-
-//can be ignored from here
-
-#define iNF                            -1061109567
-#define PI                             3.1415926535897932384626
-#define pB                             pop_back()
-
-//Sort
-#define sortva(v)                      sort(all(v))
-#define sortvd(v)                      sort(v.begin(),v.end(),greater<int>());
-#define sortaa(a,n)                    sort(a,a+n)
-#define sortad(a,n)                    sort(a,a+n),reverse(a,a+n)  /* Better use sort(a,a+n,greater<int>())  in case of arrays*/
-
-// Some common useful functions
-#define maX                            INF
-#define miN                            INT_MIN
-#define checkbit(n,b)                  ((n >> b) & 1)
-#define INDEX(arr,ind)                 (lower_bound(all(arr),ind)-arr.begin())
-#define NP(a)                          next_permutation(all(a))
 
 //sieve 
 #define LIM1 1000006
@@ -114,26 +88,36 @@ inline void Fact(){fact[0]=1;FOR(i,1,LIM2)fact[i]=(i*fact[i-1])%MOD;}
 inline ll inv(ll x,ll mod){return ipow(x,mod-2,mod);}
 inline ll comb(ll a, ll b){return ((fact[a]*inv(fact[b],MOD)%MOD)*inv(fact[a-b],MOD))%MOD;}
 
+#define fast_io                        ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);  srand(time(NULL));
+#define sublimeProblem                 freopen("input.txt", "r", stdin); freopen("output.txt", "w", stdout); freopen("debug_log.txt", "w", stderr);
+#define TCase                          int ___T, case_n = 1; cin>>___T; while (___T-- > 0)
+
+
 #define N 100005
-int n,arr[N];
+//vi g[N];
+//bool visited[N];
+//beware of global uses
+int n,k,arr[N];
 
-void solve(){
-
-    
+void init(){
 
 }
 
-int main()
-{
+void solve(){
+        
+}
+
+
+int main(){
+
     sublimeProblem;
     fast_io;
 
-    clock_t z = clock();
-    
-    TCase 
-    {
-        solve();
+
+    // int t; cin>>t; while(t--)
+    { 
+        init();
+        solve();   
     }
 
-    debug("Total Time: %.3f\n", (double)(clock() - z) / CLOCKS_PER_SEC);
 }
