@@ -7,3 +7,4 @@
 *disjoint sets//http://www.usaco.org/current/data/sol_simplify.html
 *shortest path
 *mst
+*https://www.geeksforgeeks.org/greedy-algorithms/
