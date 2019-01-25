@@ -1,0 +1,9 @@
+//On 25
+//
+*Learn to play with words.
+*Sqrt Decomposition 1D
+*BIT, seg tree
+*LCA https://www.codechef.com/ICOP1904/problems/TREEDGE
+*disjoint sets//http://www.usaco.org/current/data/sol_simplify.html
+*shortest path
+*mst

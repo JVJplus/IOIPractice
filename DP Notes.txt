@@ -1,0 +1,12 @@
+//DP Techniques
+
+*Read Question 3thrice.
+*Recursive nhi hoga toh Taabulation sochna
+*Try Reducing states. like n-something=something.
+
+i) if n value is >>. try maintaining frequency hashing and solve.
+
+ii) if parameter size is >>. try if its possible to precalculate and pass the index of another array.
+
+iii) When Memory exceeds, try using 2- 1D array, and toggle between them.
+
